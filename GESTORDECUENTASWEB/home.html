@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Control de Inventario y Ventas</h1>
+    </header>
+    <nav class="navbar">
+        <button onclick="mostrarSeccion('inventory-control')">Control de Inventario</button>
+        <button onclick="mostrarSeccion('sales-record')">Registro de Ventas</button>
+        <button onclick="mostrarSeccion('client-manager')">Gestor de Clientes</button>
+    </nav>
+    <main>
+        <section id="inventory-control">
+            <button id="show-form-button" onclick="toggleForm()">Agregar Producto</button>
+            <form id="add-product-form">
+                <h3>Nueva Cuenta</h3>
+                <div class="input-row">
+                    <input type="email" id="email" name="email" placeholder="Correo" required>
+                    <input type="text" id="password" name="password" placeholder="Contraseña" value="casa990" required>
+                </div>
+                <div class="input-row">
+                    <input type="text" id="category" name="category" placeholder="Categoría" required>
+                    <select id="account-type" name="account-type" required>
+                        <option value="" disabled selected>Tipo de Cuenta</option>
+                        <option value="Completa">Completa</option>
+                        <option value="Pantalla">Pantalla</option>
+                    </select>
+                    <select id="profile-count" name="profile-count" onchange="toggleOtroPerfil(this)" required>
+                        <option value="" disabled selected>Cantidad de Perfiles</option>
+                        <option value="1">1</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                    <input type="number" id="otro-perfil" name="otro-perfil" placeholder="Cantidad de Perfiles" style="display:none;">
+                    <select id="status" name="status" required>
+                        <option value="" disabled selected>Estado</option>
+                        <option value="Activo">Activo</option>
+                        <option value="Expirado">Expirado</option>
+                    </select>
+                </div>
+                <div class="input-row">
+                    <input type="number" id="validity" name="validity" placeholder="Vigencia" required>
+                    <select id="validity-unit" name="validity-unit" required>
+                        <option value="dias">Días</option>
+                        <option value="mes">Mes</option>
+                    </select>
+                    <select id="payment-method" name="payment-method" onchange="toggleOtroPago(this)" required>
+                        <option value="" disabled selected>Medio de Pago</option>
+                        <option value="Nu">Nu</option>
+                        <option value="Nequi">Nequi</option>
+                        <option value="codigo promocional">Código Promocional</option>
+                    </select>
+                    <input type="text" id="tarjeta" name="tarjeta" placeholder="Tarjeta" style="display:none;">
+                    <input type="date" id="payment-date" name="payment-date" placeholder="Fecha de Pago" required>
+                </div>
+                <div class="price-container">
+                    <input type="number" id="purchase-price" name="purchase-price" placeholder="Precio de Compra" required>
+                    <select id="dominio" name="dominio" required>
+                        <option value="" disabled selected>Dominio</option>
+                        <option value="Mia">StreamingConElias</option>
+                        <option value="FamilyStrea">FamilyStream</option>
+                        <option value="kunxtor">kunxtor</option>
+                        <option value="Proveedores">Proveedores</option>
+                    </select>
+                </div>
+                <button type="submit">Agregar Producto</button>
+            </form>
+            <h2>Inventario Disponible</h2>
+            <table id="inventory-table">
+                <thead>
+                    <tr>
+                        <th>Correo</th>
+                        <th>Contraseña</th>
+                        <th>Fecha de Pago</th>
+                        <th>Medio de Pago</th>
+                        <th>Tipo de Cuenta</th>
+                        <th>Precio de Compra</th>
+                        <th>Dominio</th>
+                        <th>Estado</th>
+                        <th>Categoría</th>
+                        <th>Vigencia</th>
+                        <th>Cantidad de Perfiles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se agregarán dinámicamente las filas de productos -->
+                </tbody>
+            </table>
+            <div id="cupos-container">
+                <!-- Aquí se agregarán dinámicamente los cupos -->
+            </div>
+        </section>
+        <section id="sales-record" style="display:none;">
+            <h2>Registro de Ventas</h2>
+            <!-- Aquí se agregarán las tablas y formularios para el registro de ventas -->
+        </section>
+        <section id="client-manager" style="display:none;">
+            <h2>Gestor de Clientes</h2>
+            <!-- Aquí se agregarán las tablas y formularios para el gestor de clientes -->
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
